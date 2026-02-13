@@ -1,0 +1,240 @@
+/* Miffy Runner - Tailwind companion styles */
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font-family: "Elsie", "Segoe UI", sans-serif;
+}
+
+.miffy-theme {
+    color-scheme: light;
+}
+
+#seasonSelect,
+#backgroundInput,
+#speedRange,
+#scaleRange,
+#chooseFile,
+#applyBackground,
+#clearBackground,
+#resetRecords {
+    border-radius: 0.75rem;
+    font-family: inherit;
+}
+
+#seasonSelect,
+#backgroundInput {
+    width: 100%;
+    border: 1px solid rgb(199 210 254 / 0.8);
+    background: rgb(255 255 255 / 0.92);
+    color: rgb(30 41 59);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    padding: 0.5rem 0.75rem;
+    outline: none;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+#seasonSelect:focus,
+#backgroundInput:focus {
+    border-color: rgb(99 102 241 / 0.75);
+    box-shadow: 0 0 0 3px rgb(165 180 252 / 0.35);
+}
+
+.setting-row {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+#chooseFile,
+#applyBackground,
+#clearBackground,
+#resetRecords {
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 8px 18px rgb(99 102 241 / 0.22);
+    transition: transform 0.12s ease, filter 0.2s ease;
+}
+
+#chooseFile,
+#applyBackground,
+#clearBackground {
+    padding: 0.5rem 0.85rem;
+    background: linear-gradient(135deg, rgb(99 102 241), rgb(56 189 248));
+}
+
+#chooseFile {
+    min-width: 2.2rem;
+    font-size: 1rem;
+}
+
+#resetRecords {
+    padding: 0.5rem 0.9rem;
+    background: linear-gradient(135deg, #ff7da6, #ffb36b);
+}
+
+#chooseFile:hover,
+#applyBackground:hover,
+#clearBackground:hover,
+#resetRecords:hover {
+    filter: brightness(0.96);
+    transform: translateY(-1px);
+}
+
+#chooseFile:active,
+#applyBackground:active,
+#clearBackground:active,
+#resetRecords:active {
+    transform: translateY(0);
+}
+
+.range-row {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.range-row input[type="range"] {
+    width: 100%;
+    accent-color: rgb(99 102 241);
+}
+
+.range-row span {
+    min-width: 3rem;
+    text-align: right;
+    color: rgb(67 56 202);
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.interstitial-wrapper {
+    --canvas-scale: 1;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    height: calc(150px * var(--canvas-scale));
+    overflow: visible;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.game-canvas {
+    width: 600px;
+    height: 150px;
+    display: block;
+    border-radius: 12px;
+    background: #f7f9ff;
+    transform: scale(var(--canvas-scale));
+    transform-origin: top center;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    box-shadow: inset 0 0 18px rgba(255, 255, 255, 0.72);
+}
+
+.message-box {
+    position: absolute;
+    inset: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(247, 249, 255, 0.84);
+    border-radius: 14px;
+    backdrop-filter: blur(8px);
+    z-index: 5;
+    touch-action: manipulation;
+    animation: fadeIn 0.3s ease;
+}
+
+.message-card {
+    background: #fff;
+    padding: 1rem 1.2rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: 0 12px 30px rgba(255, 105, 180, 0.16);
+    animation: bounceIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.message-icon {
+    font-size: 2rem;
+    margin-bottom: 0.3rem;
+    animation: float 2s ease-in-out infinite;
+}
+
+.message-card h2 {
+    margin: 0 0 0.25rem;
+    font-size: 1.05rem;
+    color: rgb(67 56 202);
+}
+
+.message-card p {
+    margin: 0;
+    color: rgb(100 116 139);
+    font-size: 0.8rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+
+    70% {
+        transform: scale(0.9);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@media (max-width: 768px) {
+    .setting-row {
+        flex-wrap: wrap;
+    }
+
+    .message-box {
+        inset: 0.55rem;
+    }
+}
