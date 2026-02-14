@@ -207,7 +207,6 @@ const MiffyConfig = {
         enabled: true,
         images: [
             // Add your image paths here, e.g. 'assets/miffy/photo-1.jpg'
-            'assets/miffy/IMG_4187.jpg',
         ],
         showIntervalMinMs: 3000,
         showIntervalMaxMs: 6000,
